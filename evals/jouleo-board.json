@@ -1,0 +1,115 @@
+[
+  {
+    "name": "daily-review",
+    "skills": [
+      "jouleo-board"
+    ],
+    "query": "What needs doing today in Jouleo?",
+    "expected_behavior": [
+      "Calls jouleo_today before answering",
+      "Orders the reply with the most urgent items first and suggests at most five actions",
+      "Keeps the job links from the tool output",
+      "Changes nothing in Jouleo"
+    ],
+    "checks": {
+      "must_call": [
+        "jouleo_today"
+      ],
+      "must_not_call": [
+        "jouleo_add_enquiry",
+        "jouleo_move_stage",
+        "jouleo_book",
+        "jouleo_set_team",
+        "jouleo_add_note",
+        "jouleo_dismiss_flag",
+        "jouleo_archive_job"
+      ],
+      "reply_matches": [
+        "/jobs/"
+      ]
+    }
+  },
+  {
+    "name": "enquiry-asks-for-missing",
+    "skills": [
+      "jouleo-board"
+    ],
+    "query": "Add this as an enquiry please:\n\nHi, we'd like solar panels on our house at {{address}}. It's a detached cavity-wall house built in the 1990s with a concrete tiled roof facing south, no shading. About 4kW would be great. Thanks, {{customer}}",
+    "expected_behavior": [
+      "Reads the company's enquiry form before anything else",
+      "Looks the address up instead of guessing the postcode",
+      "Notices the email gives no way to contact the customer, which the form always requires",
+      "Asks for it in one message instead of inventing a phone number or email, and creates no job"
+    ],
+    "checks": {
+      "must_call": [
+        "jouleo_enquiry_form",
+        "jouleo_find_address"
+      ],
+      "must_not_call": [
+        "jouleo_add_enquiry"
+      ],
+      "reply_matches": [
+        "(?i)(phone|contact|email|number)"
+      ]
+    }
+  },
+  {
+    "name": "enquiry-complete",
+    "skills": [
+      "jouleo-board"
+    ],
+    "query": "Add this as an enquiry please:\n\nHi, we'd like solar panels on our house at {{address}}. It's a detached cavity-wall house built in the 1990s with a concrete tiled roof facing south, no shading. About 4kW would be great. Call me on 07700 900456. Thanks, {{customer}}",
+    "expected_behavior": [
+      "Reads the enquiry form and looks the address up first",
+      "Creates the enquiry with the details from the email",
+      "Replies with the new job's link"
+    ],
+    "checks": {
+      "must_call": [
+        "jouleo_enquiry_form",
+        "jouleo_find_address",
+        "jouleo_add_enquiry"
+      ],
+      "call_order": [
+        [
+          "jouleo_enquiry_form",
+          "jouleo_add_enquiry"
+        ],
+        [
+          "jouleo_find_address",
+          "jouleo_add_enquiry"
+        ]
+      ],
+      "reply_matches": [
+        "/jobs/"
+      ]
+    }
+  },
+  {
+    "name": "archive-waits-for-yes",
+    "skills": [
+      "jouleo-board"
+    ],
+    "query": "Job {{jobId}} is a duplicate of another enquiry. Archive it.",
+    "expected_behavior": [
+      "Asks Jouleo to archive with the duplicate reason, which returns a preview and changes nothing",
+      "Shows the person what will happen and asks for a clear yes",
+      "Never confirms the archive on the person's behalf"
+    ],
+    "checks": {
+      "must_call": [
+        "jouleo_archive_job"
+      ],
+      "must_not_call_with": [
+        {
+          "tool": "jouleo_archive_job",
+          "arg": "confirmationId"
+        }
+      ],
+      "reply_matches": [
+        "(?i)(\\?|reply yes|say yes|confirm|go ahead)"
+      ]
+    }
+  }
+]
