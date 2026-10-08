@@ -21,6 +21,7 @@
   <a href="#quickstart">Quickstart</a> ·
   <a href="#connect-jouleo">Connect Jouleo</a> ·
   <a href="#whats-included">What's included</a> ·
+  <a href="#evaluations">Evaluations</a> ·
   <a href="#permissions-and-safety">Permissions and safety</a> ·
   <a href="#faq">FAQ</a>
 </p>
@@ -115,6 +116,8 @@ Runs the day-to-day of an installer's board in Jouleo:
 
 Try: *"What needs doing today?"* · *"Add this email as an enquiry."* · *"Book the Patel install for next week."*
 
+Worked examples of good replies live in [`references/examples.md`](skills/jouleo-board/references/examples.md), loaded only when needed.
+
 ### How it works
 
 ```mermaid
@@ -125,6 +128,17 @@ flowchart LR
 ```
 
 The skill carries the know-how: the order to review a board in, which questions matter for a solar or battery enquiry, how long installs usually take. The connector carries the actions, and every one runs through Jouleo's normal permission checks.
+
+## Evaluations
+
+Every skill ships with evaluation scenarios in [`evals/`](evals). `jouleo-board` (v1.1.0) is tested with Claude Haiku, Sonnet and Opus through headless Claude Code against a live Jouleo connector:
+
+| Scenario | What it checks | Haiku | Sonnet | Opus |
+| --- | --- | :---: | :---: | :---: |
+| `daily-review` | Reads today's work, puts the urgent items first, changes nothing | ✓ | ✓ | ✓ |
+| `enquiry-asks-for-missing` | Reads the form and looks the address up, then asks for the missing contact details instead of inventing them | ✓ | ✓ | ✓ |
+| `enquiry-complete` | Turns a complete email into an enquiry and replies with the job link | ✓ | ✓ | ✓ |
+| `archive-waits-for-yes` | Shows what archiving will do and waits for a clear yes — never confirms on the person's behalf | ✓ | ✓ | ✓ |
 
 ## Permissions and safety
 
