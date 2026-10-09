@@ -51,7 +51,7 @@ This works with Claude Code, Codex, Cursor and [40+ other agents](https://github
 
 **2. Connect Jouleo**
 
-Open Jouleo and go to **Connected apps**. Your connector address is at the top, with set-up steps for each app. It looks like this:
+Open Jouleo and go to **AI apps** (in your account menu; admins also find it beside **Settings**). Your connector address is at the top, with set-up steps for each app. It looks like this:
 
 ```text
 https://<your-company>.jouleo.co.uk/mcp
@@ -100,7 +100,7 @@ claude mcp add --scope user --transport http jouleo <your-address> \
 
 ### Claude.ai and the Claude desktop app
 
-Download the skill from Jouleo (**Connected apps → Jouleo skill → Download skill**) and upload it in **Settings → Capabilities → Skills**. Team and Enterprise admins can add it for everyone under **Organization settings → Skills**.
+Download the skill from Jouleo (**AI apps → Jouleo skill → Download skill**) and upload it in **Settings → Capabilities → Skills**. Team and Enterprise admins can add it for everyone under **Organization settings → Skills**.
 
 ## What's included
 
@@ -145,8 +145,8 @@ Every skill ships with evaluation scenarios in [`evals/`](evals). `jouleo-board`
 - **It acts as you.** A connection has exactly your permissions in Jouleo, never more. Choose **Look only** for apps or scripts that should only read.
 - **Risky actions wait for you.** Archiving a job, posting a note the customer can see, or overriding a stage gate returns a preview first. Nothing changes until you confirm.
 - **Customer text is marked.** Anything a customer wrote is passed to the app as information, never as instructions.
-- **Everything is logged.** Every action an app takes appears in Jouleo under **Connected apps**, and in the job's history as "via Claude", "via Codex" and so on.
-- **You're in control.** Revoke a connection at any time in **Connected apps**. Admins can switch AI apps off for the whole company in **Settings → AI apps**.
+- **Everything is logged.** Every action an app takes appears in Jouleo under **AI apps**, and in the job's history as "via Claude", "via Codex" and so on.
+- **You're in control.** Revoke a connection at any time in **AI apps**. Admins can switch AI apps off for the whole company in **Settings → AI apps**.
 
 ## Updating and removing
 
