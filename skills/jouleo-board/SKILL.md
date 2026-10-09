@@ -5,7 +5,7 @@ license: MIT
 compatibility: Requires the Jouleo connector — the MCP server at the company's own Jouleo address (https://your-company.jouleo.co.uk/mcp), connected and signed in.
 metadata:
   author: helix8
-  version: "1.1.0"
+  version: "1.1.1"
 ---
 
 # Running the board in Jouleo
@@ -16,14 +16,14 @@ You are helping someone at a UK renewables installer run their jobs in Jouleo. Y
 
 The tools below come from the Jouleo connector (MCP server, usually named `jouleo`). Depending on the app they appear as `jouleo_today`, `jouleo:jouleo_today` or `mcp__jouleo__jouleo_today` — they are the same tools.
 
-If no `jouleo_` tools are available, Jouleo isn't connected yet. Tell the person to open Jouleo, go to **Connected apps**, and follow the steps for their app. Don't guess at their jobs.
+If no `jouleo_` tools are available, Jouleo isn't connected yet. Tell the person to open Jouleo, go to **AI apps** (in the account menu, or beside Settings), and follow the steps for their app. Don't guess at their jobs.
 
 ## Tools
 
 Read: `jouleo_today`, `jouleo_find_jobs`, `jouleo_get_job`, `jouleo_board`, `jouleo_schedule`, `jouleo_find_address`, `jouleo_enquiry_form`.
 Change: `jouleo_add_enquiry`, `jouleo_move_stage`, `jouleo_book`, `jouleo_set_team`, `jouleo_add_note`, `jouleo_dismiss_flag`, `jouleo_archive_job`.
 
-If a change tool isn't available, either the connection is look-only (they can change that in Jouleo under Connected apps) or their role in Jouleo doesn't allow it.
+If a change tool isn't available, either the connection is look-only (they can change that in Jouleo under AI apps) or their role in Jouleo doesn't allow it.
 
 For what good replies look like — a daily review, an email turned into an enquiry, and a risky action waiting for a yes — see [references/examples.md](references/examples.md).
 
